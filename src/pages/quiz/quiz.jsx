@@ -63,7 +63,7 @@ export const Quiz = () => {
             setAnswervalue('')
             console.log(qnans.answers)
 		} else {
-            navigate("/report", { replace: true });
+            navigate("/report");
 		}
 	};
 

@@ -6,7 +6,7 @@ function DetailsContextProvider(props) {
 
     const [qnans, setQnans] = useState(
         JSON.parse(localStorage.getItem("qnans")) || {
-        qapair:[{"answer":"gravitation","question":"What is another name for gravity?"},{"answer":"Earth","question":"On what planet does gravity give weight to physical objects?"},{"answer":"galaxies","question":"What do the stars in the Universe form?"},{"answer":"infinite range","question":"What is the range of gravity?"}],
+        qapair:[{}],
         answers:[]
         }
         )
