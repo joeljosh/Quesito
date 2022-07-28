@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
-import {Redirect} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import './quiz.css'
 import { DetailsContext } from '../../contexts/context'
@@ -40,6 +40,7 @@ const AnsTextField = styled(TextField)({
 
 
 export const Quiz = () => {
+    let navigate = useNavigate();
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answervalue, setAnswervalue] = useState('');
     const { qnans, updateAns} = useContext(DetailsContext);
@@ -62,9 +63,7 @@ export const Quiz = () => {
             setAnswervalue('')
             console.log(qnans.answers)
 		} else {
-			// <Redirect to="/home" />
-            alert("done");
-
+            navigate("/report", { replace: true });
 		}
 	};
 
