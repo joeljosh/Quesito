@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import Button from "@mui/material/Button";
 import { styled } from '@mui/material/styles';
 import logo from "../../assets/icons/logo.png";
@@ -100,8 +100,7 @@ export const Login = () => {
         <br></br>
         <div style={{ color: "gray", padding: "12px 8px 4px" }}>Or</div>
         <h3 className="gradient">
-          Create an account?
-          {/* <Link to="/signup">Create an account?</Link> */}
+          <Link to="/signup">Create an account?</Link> 
         </h3>
       </div>
       {/* <SnackBar

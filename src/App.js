@@ -2,7 +2,7 @@ import {Home} from './pages/home/home.jsx'
 import {Login} from './pages/login/login.jsx';
 import {Quiz} from './pages/quiz/quiz.jsx';
 import {Report} from './pages/report/report.jsx';
-// import {Signup} from './pages/signup/signup';
+import Signup from './pages/signup/signup';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css';
 
@@ -12,7 +12,7 @@ function App() {
             <Router>
       <Routes>
                   <Route path="/login" exact element={<Login />}/>
-                  {/* <Route path="/signup" exact element={<Signup />}/> */}
+                  <Route path="/signup" exact element={<Signup />}/> 
                   <Route path="/home" exact element={<Home />} />
                   <Route path="/quiz" exact element={<Quiz />}/>
                   <Route path="/report" exact element={<Report />}/>
