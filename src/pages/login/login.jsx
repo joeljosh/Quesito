@@ -1,16 +1,40 @@
 import React,{useState,useEffect} from 'react';
 
+import Button from "@mui/material/Button";
+import { styled } from '@mui/material/styles';
 import logo from "../../assets/icons/logo.png";
 import loginImg from "../../assets/icons/login3D.png";
 import user from "../../assets/icons/user.svg";
 import lock from "../../assets/icons/lock.svg";
+// import Theme from "../theme";
 
 import './login.css'
+
+
+const ColorButton = styled(Button)(({ theme }) => ({
+    margin: theme.spacing(1),
+    borderRadius: 25,
+    width: 260,
+    color: "#fff",
+    color: theme.palette.getContrastText("#fff"),
+    backgroundImage:
+      "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
+}));
+
 
 export const Login = () => {
     const [show, setShow] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    function Togglelogin() {
+      if (!show) {
+        setShow(true);
+        return;
+      } else {
+        // handleLogin();
+      }
+    }
 
     return(
         <div className="login">
@@ -58,11 +82,10 @@ export const Login = () => {
           </div>
         )}
         <br></br>
-        {/* <ColorButton
+        <ColorButton
           variant="contained"
           type="submit"
           color="primary"
-          className={classes.button}
           onClick={() => Togglelogin()}
         >
           {"Log In"}
@@ -70,10 +93,11 @@ export const Login = () => {
         <br></br>
         <div style={{ color: "gray", padding: "12px 8px 4px" }}>Or</div>
         <h3 className="gradient">
-          <Link to="/signup">Create an account?</Link>
+        Create an account?
+          {/* <Link to="/signup">Create an account?</Link> */}
         </h3>
       </div>
-      <SnackBar
+      {/* <SnackBar
         message="Invalid e-mail and/or password"
         severity="error"
         showBar={error}
@@ -81,7 +105,6 @@ export const Login = () => {
           setError(false);
         }}
       /> */}
-    </div>
     </div>
     )
 }
