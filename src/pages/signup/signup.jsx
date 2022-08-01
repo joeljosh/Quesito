@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { styled } from '@mui/material/styles';
 import logo from "../../assets/icons/logo.png";
 import user from "../../assets/icons/user.svg";
 import lock from "../../assets/icons/lock.svg";
 import "./signup.css";
+import { useAuth } from "../../contexts/authContexts"
 
 const ColorButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
@@ -18,12 +19,14 @@ const ColorButton = styled(Button)(({ theme }) => ({
   }));
 
   export default function Signup() {
-
+    let navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [fullName, setFullName] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false)
+    const { signup } = useAuth()
 
 
     async function handleSignup() {
@@ -34,6 +37,19 @@ const ColorButton = styled(Button)(({ theme }) => ({
           setPasswordConfirm("");
           return;
         }
+        try {
+          setError("")
+          setLoading(true)
+          console.log(1111)
+          console.log(email)
+          console.log(password)
+          await signup(email, password)
+          console.log("signup")
+          navigate("/login");
+        } catch {
+          setError("Failed to create an account")
+        }
+        setLoading(false)
     }
 
     return (

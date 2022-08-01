@@ -58,6 +58,21 @@ export const Home = () => {
             .catch(function (error) {
                 console.log(error);
             });
+
+        // updateQnans([{'answer': 'gravitation', 'question': 'What is another name for gravity?'},
+        // {'answer': 'Earth',
+        //  'question': 'On what planet does gravity give weight to physical objects?'},
+        // {'answer': 'galaxies', 'question': 'What do the stars in the Universe form?'},
+        // {'answer': 'infinite range', 'question': 'What is the range of gravity?'
+        // },
+        // {'answer': 'gravitation', 'question': 'What is another name for gravity?'},
+        // {'answer': 'Earth',
+        //  'question': 'On what planet does gravity give weight to physical objects?'},
+        // {'answer': 'galaxies', 'question': 'What do the stars in the Universe form?'},
+        // {'answer': 'infinite range', 'question': 'What is the range of gravity?'
+        // }])    
+        // console.log(qnans);
+        // setgenerate(true);    
     }
 
     const handleTextChange = (event) => {

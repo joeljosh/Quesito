@@ -3,13 +3,16 @@ import {Login} from './pages/login/login.jsx';
 import {Quiz} from './pages/quiz/quiz.jsx';
 import {Report} from './pages/report/report.jsx';
 import Signup from './pages/signup/signup';
+import { AuthProvider } from "./contexts/authContexts"
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+     
             <Router>
+            <AuthProvider>
       <Routes>
                   <Route path="/login" exact element={<Login />}/>
                   <Route path="/signup" exact element={<Signup />}/> 
@@ -18,7 +21,9 @@ function App() {
                   <Route path="/report" exact element={<Report />}/>
                   <Route path="*" element={<Navigate to="/login" replace />} />
               </Routes>
+              </AuthProvider>
       </Router>
+      
     </div>
   );
 }
