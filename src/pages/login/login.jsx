@@ -7,6 +7,7 @@ import logo from "../../assets/icons/logo.png";
 import loginImg from "../../assets/icons/login3D.png";
 import user from "../../assets/icons/user.svg";
 import lock from "../../assets/icons/lock.svg";
+import { useAuth } from "../../contexts/authContexts"
 // import Theme from "../theme";
 
 import './login.css'
@@ -25,13 +26,19 @@ const ColorButton = styled(Button)(({ theme }) => ({
 
 export const Login = () => {
   let navigate = useNavigate();
+  const { login } = useAuth();
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("")
 
-
-  function handlelogin() {
-    navigate("/home");
+async function handlelogin() {
+    try {
+      await login(email, password)
+      navigate("/home");
+    } catch {
+      alert("Failed to log in")
+    }
   }
 
   function Togglelogin() {
