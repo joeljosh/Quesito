@@ -2,11 +2,21 @@ import React, { useState, useContext } from 'react';
 import { DetailsContext } from '../../contexts/context'
 
 export const Report = () => {
-    const { qnans} = useContext(DetailsContext);
+    const { qnans } = useContext(DetailsContext);
     console.log(qnans.answers)
-    return(
+    return (
         <div>
-            <h1>{qnans.qapair[0].question}</h1>
+            {qnans.qapair.map((value, index) => {
+                return (
+                    <>
+                        <h1>{value.question}</h1>
+                        <p>{value.answer}</p>
+                        <p>{qnans.answers[index]}</p>
+                        <hr></hr>
+                    </>
+                )
+            })}
+            {/* <h1>{qnans.qapair[0].question}</h1>
             <p>{qnans.qapair[0].answer}</p>
             <p>{qnans.answers[0]}</p>
             <hr></hr>
@@ -17,7 +27,7 @@ export const Report = () => {
             <h1>{qnans.qapair[2].question}</h1>
             <p>{qnans.qapair[2].answer}</p>
             <p>{qnans.answers[2]}</p>
-            <hr></hr>
+            <hr></hr> */}
         </div>
 
     )

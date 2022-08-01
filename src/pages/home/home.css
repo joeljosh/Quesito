@@ -3,12 +3,14 @@
 }
 
 .first{
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background-color: #064635;
 }
   
 .second{
-    margin-top: 5vh;
+    min-height: 100vh;
+    padding-top: 5vh;
+    background-color: #064635;
 }
 
 .submit{

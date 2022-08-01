@@ -6,7 +6,8 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 import './home.css'
 import { DetailsContext } from '../../contexts/context'
@@ -33,21 +34,32 @@ const OurTextField = styled(TextField)(({ theme }) => ({
 
 
 export const Home = () => {
-    const [inputvalue, setInputvalue] = useState('');
+    const [inputvalue, setInputvalue] = useState('ww');
+    const [send, setSend] = useState(true)
     const [loading, setLoading] = useState(false);
     const [generate, setgenerate] = useState(false);
     const { qnans, updateQnans, resetAnswers } = useContext(DetailsContext);
 
-    function handleSubmit() {
+    const handleSubmit = () => {
         setLoading(true);
-        updateQnans([{'answer': 'gravitation', 'question': 'What is another name for gravity?'},
-        {'answer': 'Earth',
-         'question': 'On what planet does gravity give weight to physical objects?'},
-        {'answer': 'galaxies', 'question': 'What do the stars in the Universe form?'},
-        {'answer': 'infinite range', 'question': 'What is the range of gravity?'
-        }]);
-        setgenerate(true)
+
+        axios.post('http://127.0.0.1:5000/connect', {
+            value: inputvalue
+        })
+            .then(function (response) {
+                console.log(response.data);
+                updateQnans(response.data.data)
+                console.log(qnans.qapair);
+                setTimeout(() => {
+                    setSend(false);
+                    setgenerate(true);
+                  }, 2000);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
+
     const handleTextChange = (event) => {
         setInputvalue(event.target.value);
     };
@@ -82,25 +94,28 @@ export const Home = () => {
                                     value={inputvalue}
                                     onChange={handleTextChange}
                                 />
-                                <LoadingButton
-                                    onClick={handleSubmit}
-                                    endIcon={<SendIcon />}
-                                    loading={loading}
-                                    loadingPosition="end"
-                                    variant="contained"
-                                >
-                                    Send
-                                </LoadingButton>
+                                {send ? 
+                                    <LoadingButton
+                                        onClick={handleSubmit}
+                                        endIcon={<SendIcon />}
+                                        loading={loading}
+                                        loadingPosition="end"
+                                        variant="contained"
+                                        sx={{ marginTop: '3vh' }}
+                                    >
+                                        Send
+                                    </LoadingButton>
+                                    : <div></div> 
+                                }
                                 {generate ?
                                     <Link to="/quiz">
-                                        <Button variant="contained" color="success" onClick={resetAnswers}>Success</Button>
+                                        <Button variant="contained" color="success" onClick={resetAnswers} sx={{ marginTop: '3vh' }}>Success</Button>
                                     </Link>
                                     : <div></div>}
                             </Grid>
                         </Grid>
                     </div>
                 </Paper>
-                gsgsg
             </div>
         </div>
 
