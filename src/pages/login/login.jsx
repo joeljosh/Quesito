@@ -84,7 +84,7 @@ async function handlelogin() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div
+            {/* <div
               style={{
                 color: 'gray',
                 textAlign: "right",
@@ -92,7 +92,7 @@ async function handlelogin() {
               }}
             >
               <span>Forgot Password?</span>
-            </div>
+            </div> */}
           </div>
         )}
         <br></br>
