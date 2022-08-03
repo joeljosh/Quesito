@@ -72,8 +72,29 @@ export const Quiz = () => {
     return (
         <div className='quizdiv'>
             <div className='boxes'>
-            {[...Array(currentQuestion + 1)].map((e, i) => <SquareRoundedIcon className='box' sx={{ color: 'green', fontSize: 45  }} />)}
-            {[...Array(total - (currentQuestion+1))].map((e, i) => <SquareRoundedIcon className='box' sx={{  fontSize: 45  }}/>)}
+                {/* {qnans.answers.map((ans) => {
+                    if(ans === 'Not Attempted'){
+                        <SquareRoundedIcon className='box' sx={{ color: 'green', fontSize: 45  }} />
+                    }
+                    else{
+                        <SquareRoundedIcon className='box' sx={{  fontSize: 45  }}/>
+                    }
+                })} */}
+                {[...Array(qnans.qapair.length)].map((e, i)=> {
+                    if(qnans.answers[i]){
+                        if(qnans.answers[i] === 'Not Attempted'){
+                            return(<SquareRoundedIcon className='box' sx={{ color: 'yellow', fontSize: 45  }} />)
+                        }
+                        else{
+                            return(<SquareRoundedIcon className='box' sx={{ color: 'green', fontSize: 45  }} />)
+                        }
+                    }
+                    else{
+                        return(<SquareRoundedIcon className='box' sx={{  fontSize: 45  }}/>)
+                    }
+                })}
+            {/* {[...Array(currentQuestion + 1)].map((e, i) => <SquareRoundedIcon className='box' sx={{ color: 'green', fontSize: 45  }} />)}
+            {[...Array(total - (currentQuestion+1))].map((e, i) => <SquareRoundedIcon className='box' sx={{  fontSize: 45  }}/>)} */}
             </div>
             <div className='quiz-section'>
                 <div className='question-section'>
